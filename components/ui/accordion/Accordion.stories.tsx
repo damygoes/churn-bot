@@ -1,18 +1,18 @@
-import type { Meta, StoryObj } from "@storybook/nextjs";
-import { Info, Lock, ServerCog } from "lucide-react";
+import type { Meta, StoryObj } from '@storybook/nextjs'
+import { Info, Lock, ServerCog } from 'lucide-react'
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "./Accordion";
+} from './Accordion'
 
 const meta: Meta<typeof Accordion> = {
-  title: "Navigation/Accordion",
+  title: 'Navigation/Accordion',
   component: Accordion,
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
 }
 export default meta
@@ -30,7 +30,8 @@ export const Default: Story = {
           </span>
         </AccordionTrigger>
         <AccordionContent>
-          This product helps SaaS teams share metrics, alerts, and releases across Slack and dashboards.
+          This product helps SaaS teams share metrics, alerts, and releases
+          across Slack and dashboards.
         </AccordionContent>
       </AccordionItem>
 
@@ -42,7 +43,8 @@ export const Default: Story = {
           </span>
         </AccordionTrigger>
         <AccordionContent>
-          Easily integrates with your GitHub, Stripe, and Slack accounts with minimal setup.
+          Easily integrates with your GitHub, Stripe, and Slack accounts with
+          minimal setup.
         </AccordionContent>
       </AccordionItem>
 
@@ -54,7 +56,8 @@ export const Default: Story = {
           </span>
         </AccordionTrigger>
         <AccordionContent>
-          Yes. All data is encrypted at rest and in transit. You remain the sole owner of your information.
+          Yes. All data is encrypted at rest and in transit. You remain the sole
+          owner of your information.
         </AccordionContent>
       </AccordionItem>
     </Accordion>

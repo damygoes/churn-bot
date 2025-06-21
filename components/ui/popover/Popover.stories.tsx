@@ -1,12 +1,12 @@
-import type { Meta, StoryObj } from "@storybook/nextjs";
-import { Button } from '../button/Button';
-import { Popover, PopoverContent, PopoverTrigger } from './Popover';
+import type { Meta, StoryObj } from '@storybook/nextjs'
+import { Button } from '../button/Button'
+import { Popover, PopoverContent, PopoverTrigger } from './Popover'
 
 const meta: Meta = {
-  title: "Navigation/Popover",
+  title: 'Navigation/Popover',
   component: Popover,
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
 }
 

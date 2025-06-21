@@ -1,12 +1,12 @@
-import type { Meta, StoryObj } from "@storybook/nextjs";
-import { addDays } from "date-fns";
-import React from 'react';
-import { Calendar } from "./Calendar";
+import type { Meta, StoryObj } from '@storybook/nextjs'
+import { addDays } from 'date-fns'
+import React from 'react'
+import { Calendar } from './Calendar'
 
 const meta: Meta<typeof Calendar> = {
-  title: "Feedback/Calendar",
+  title: 'Feedback/Calendar',
   component: Calendar,
-  tags: ["autodocs"],
+  tags: ['autodocs'],
 }
 
 export default meta
@@ -14,11 +14,13 @@ export default meta
 type Story = StoryObj<typeof Calendar>
 
 export const Default: Story = {
-  render: () => <Calendar  mode='single'/>,
+  render: () => <Calendar mode="single" />,
 }
 
 export const WithSelectedDate: Story = {
-  render: () => <Calendar mode="range" selected={{ from: new Date() }} required={true} />,
+  render: () => (
+    <Calendar mode="range" selected={{ from: new Date() }} required={true} />
+  ),
 }
 
 export const RangeSelection: Story = {
@@ -48,9 +50,9 @@ export const ControlledSelection: Story = {
 
     return (
       <div className="flex flex-col items-start gap-4">
-        <Calendar mode='single' selected={selected} onSelect={setSelected} />
+        <Calendar mode="single" selected={selected} onSelect={setSelected} />
         <div className="text-sm">
-          Selected date: {selected?.toLocaleDateString() || "None"}
+          Selected date: {selected?.toLocaleDateString() || 'None'}
         </div>
       </div>
     )
@@ -65,7 +67,6 @@ export const CaptionDropdown: Story = {
       endMonth={new Date(2025, 11, 31)}
       selected={new Date()}
       mode="single"
-      
     />
   ),
 }

@@ -1,27 +1,27 @@
-import type { Meta, StoryFn } from "@storybook/nextjs";
-import { Separator } from '../separator/Separator';
-import { Input } from './Input';
+import type { Meta, StoryFn } from '@storybook/nextjs'
+import { Separator } from '../separator/Separator'
+import { Input } from './Input'
 
 const meta: Meta<typeof Input> = {
-  title: "Primitives/Input",
+  title: 'Primitives/Input',
   component: Input,
-    parameters: {
-    layout: "centered",
+  parameters: {
+    layout: 'centered',
   },
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   argTypes: {
     iconPosition: {
-      control: "radio",
-      options: ["before", "after"],
+      control: 'radio',
+      options: ['before', 'after'],
     },
   },
-};
+}
 
-export default meta;
+export default meta
 
 export const Default: StoryFn = (args) => (
   <Input placeholder="Enter your email" {...args} />
-);
+)
 
 export const WithIconBefore: StoryFn = () => (
   <Input
@@ -29,15 +29,11 @@ export const WithIconBefore: StoryFn = () => (
     icon="search"
     iconPosition="before"
   />
-);
+)
 
 export const WithIconAfter: StoryFn = () => (
-  <Input
-    placeholder="Search something..."
-    icon="search"
-    iconPosition="after"
-  />
-);
+  <Input placeholder="Search something..." icon="search" iconPosition="after" />
+)
 
 export const States: StoryFn = () => (
   <section className="space-y-8 max-w-md">
@@ -56,21 +52,13 @@ export const States: StoryFn = () => (
     <div>
       <p>With icon (before)</p>
       <Separator className="mt-0.5 mb-3" />
-      <Input
-        placeholder="With icon"
-        icon="calendar"
-        iconPosition="before"
-      />
+      <Input placeholder="With icon" icon="calendar" iconPosition="before" />
     </div>
 
     <div>
       <p>With icon (after)</p>
       <Separator className="mt-0.5 mb-3" />
-      <Input
-        placeholder="With icon"
-        icon="calendar"
-        iconPosition="after"
-      />
+      <Input placeholder="With icon" icon="calendar" iconPosition="after" />
     </div>
   </section>
-);
+)

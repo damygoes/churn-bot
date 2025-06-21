@@ -1,18 +1,18 @@
-import type { Meta, StoryFn, StoryObj } from "@storybook/nextjs";
-import { Icon } from '../icon/Icon';
-import { Separator } from '../separator/Separator';
-import { Button, ButtonSizes, ButtonVariants } from './Button';
+import type { Meta, StoryFn, StoryObj } from '@storybook/nextjs'
+import { Icon } from '../icon/Icon'
+import { Separator } from '../separator/Separator'
+import { Button, ButtonSizes, ButtonVariants } from './Button'
 
 const variants: ButtonVariants = [
-  "default",
-  "secondary",
-  "destructive",
-  "outline",
-  "ghost",
-  "link",
-];
+  'default',
+  'secondary',
+  'destructive',
+  'outline',
+  'ghost',
+  'link',
+]
 
-const sizes: ButtonSizes = ["sm", "default", "icon"];
+const sizes: ButtonSizes = ['sm', 'default', 'icon']
 
 const meta: Meta<typeof Button> = {
   title: 'Primitives/Button',
@@ -43,17 +43,17 @@ const meta: Meta<typeof Button> = {
     variant: 'default',
     size: 'default',
   },
-};
+}
 
-export default meta;
-type Story = StoryObj<typeof Button>;
+export default meta
+type Story = StoryObj<typeof Button>
 
 export const Default: StoryFn<Story> = (args) => {
   return (
     <Button variant="default" size="default" {...args}>
-      <span className='capitalize'>Button</span>
+      <span className="capitalize">Button</span>
     </Button>
-  );
+  )
 }
 
 export const Variants: StoryFn<Story> = () => {
@@ -61,11 +61,11 @@ export const Variants: StoryFn<Story> = () => {
     <div className="flex flex-wrap gap-4">
       {variants.map((variant) => (
         <Button key={variant} variant={variant}>
-          <span className='capitalize'>{variant}</span>
+          <span className="capitalize">{variant}</span>
         </Button>
       ))}
     </div>
-  );
+  )
 }
 
 export const Sizes: StoryFn<Story> = () => {
@@ -73,15 +73,15 @@ export const Sizes: StoryFn<Story> = () => {
     <div className="flex flex-wrap gap-4">
       {sizes.map((size) => (
         <Button key={size} size={size}>
-          {size === "icon" ? (
+          {size === 'icon' ? (
             <span>Icon</span>
           ) : (
-            <span className='capitalize'>Registrieren</span>
+            <span className="capitalize">Registrieren</span>
           )}
         </Button>
       ))}
     </div>
-  );
+  )
 }
 
 export const States: StoryFn<Story> = () => {
@@ -100,7 +100,7 @@ export const States: StoryFn<Story> = () => {
       <div>
         <p>With Icons</p>
         <Separator className="my-3" />
-        <div className='flex flex-wrap gap-4'>
+        <div className="flex flex-wrap gap-4">
           <Button icon="trending-up" iconPosition="before">
             With Left Icon
           </Button>
@@ -110,9 +110,8 @@ export const States: StoryFn<Story> = () => {
         </div>
       </div>
     </section>
-  );
-};
-
+  )
+}
 
 export const IconButton: StoryFn<Story> = () => {
   return (
@@ -127,7 +126,7 @@ export const IconButton: StoryFn<Story> = () => {
       <div>
         <p>Disabled State</p>
         <Separator className="my-3" />
-        <div className='flex flex-wrap gap-base'>
+        <div className="flex flex-wrap gap-base">
           <Button size="icon" disabled>
             <Icon name="trending-down" />
           </Button>
@@ -136,26 +135,26 @@ export const IconButton: StoryFn<Story> = () => {
       <div>
         <p>With variants</p>
         <Separator className="my-3" />
-        <div className='flex flex-wrap gap-4'>
+        <div className="flex flex-wrap gap-4">
           <Button size="icon">
             <Icon name="trending-up" />
           </Button>
-          <Button size="icon" variant='secondary'>
+          <Button size="icon" variant="secondary">
             <Icon name="trending-up" />
           </Button>
-          <Button size="icon" variant='ghost'>
+          <Button size="icon" variant="ghost">
             <Icon name="trending-up" />
           </Button>
-          <Button size="icon" variant='destructive'>
+          <Button size="icon" variant="destructive">
             <Icon name="trending-up" />
           </Button>
-          <Button size="icon" variant='outline'>
+          <Button size="icon" variant="outline">
             <Icon name="trending-up" />
           </Button>
         </div>
       </div>
     </section>
-  );
+  )
 }
 
 export const SizesWithIcon: StoryFn<Story> = () => {
@@ -163,11 +162,9 @@ export const SizesWithIcon: StoryFn<Story> = () => {
     <div className="flex flex-wrap gap-4">
       {sizes.map((size) => (
         <Button key={size} size={size} icon="trending-up">
-          {size !== "icon" && (
-            <span className='capitalize'>Get started</span>
-          )}
+          {size !== 'icon' && <span className="capitalize">Get started</span>}
         </Button>
       ))}
     </div>
-  );
+  )
 }

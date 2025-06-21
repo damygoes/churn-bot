@@ -1,6 +1,6 @@
-import type { Meta, StoryObj } from "@storybook/nextjs";
+import type { Meta, StoryObj } from '@storybook/nextjs'
 
-import { Icon } from '../icon/Icon';
+import { Icon } from '../icon/Icon'
 import {
   Select,
   SelectContent,
@@ -10,14 +10,14 @@ import {
   SelectSeparator,
   SelectTrigger,
   SelectValue,
-} from "./Select";
+} from './Select'
 
 const meta: Meta = {
-  title: "Feedback/Select",
+  title: 'Feedback/Select',
   component: Select,
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
 }
 export default meta
@@ -60,15 +60,15 @@ export const WithIcons: Story = {
         <SelectGroup>
           <SelectLabel>Fruits</SelectLabel>
           <SelectItem value="calendar">
-            <Icon name='calendar' />
+            <Icon name="calendar" />
             Calendar
           </SelectItem>
           <SelectItem value="trends">
-            <Icon name='trending-up' />
+            <Icon name="trending-up" />
             Trends
           </SelectItem>
           <SelectItem value="explore">
-            <Icon name='search' />
+            <Icon name="search" />
             Explore
           </SelectItem>
         </SelectGroup>

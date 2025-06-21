@@ -1,4 +1,4 @@
-import * as Icons from "lucide-react";
+import * as Icons from 'lucide-react'
 
 export const iconMap = {
   alert: Icons.AlertTriangle,
@@ -13,10 +13,9 @@ export const iconMap = {
   search: Icons.Search,
   'trending-up': Icons.TrendingUp,
   'trending-down': Icons.TrendingDown,
-} as const;
+} as const
 
-
-export type IconName = keyof typeof iconMap;
+export type IconName = keyof typeof iconMap
 
 // This gives a typed array of keys
-export const iconNames = Object.keys(iconMap) as IconName[];
+export const iconNames = Object.keys(iconMap) as IconName[]
