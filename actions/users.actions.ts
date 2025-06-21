@@ -4,6 +4,7 @@ import { db } from '@/db/drizzle'
 import { users } from '@/db/schema'
 import { auth } from '@clerk/nextjs/server'
 import { eq } from 'drizzle-orm'
+import { revalidatePath } from 'next/cache'
 
 export async function upsertUser({
   clerkUserId,
@@ -64,4 +65,23 @@ export async function updateUser({
     .update(users)
     .set({ firstName, lastName, avatarUrl })
     .where(eq(users.clerkUserId, userId))
+}
+
+export async function updateUserProfile({
+  clerkUserId,
+  firstName,
+  lastName,
+  avatarUrl,
+}: {
+  clerkUserId: string
+  firstName?: string
+  lastName?: string
+  avatarUrl?: string
+}) {
+  await db
+    .update(users)
+    .set({ firstName, lastName, avatarUrl })
+    .where(eq(users.clerkUserId, clerkUserId))
+
+  revalidatePath('/dashboard')
 }

@@ -22,12 +22,9 @@ export function SyncClerkUser() {
 
       const existingUser = await getUserByClerkId(clerkUserId)
 
-      if (
-        !existingUser ||
-        existingUser.email !== email ||
-        existingUser.firstName !== firstName ||
-        existingUser.lastName !== lastName
-      ) {
+      console.log('existingUser', existingUser)
+
+      if (!existingUser) {
         await upsertUser({
           clerkUserId,
           email,

@@ -31,5 +31,26 @@
   "Settings": {
     "title": "Settings",
     "description": "Adjust your preferences and settings here."
+  },
+  "ProfileForm": {
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "email": "Email",
+    "saveChanges": "Save Changes",
+    "updating": "Updating...",
+    "successMessage": "Profile updated successfully!",
+    "errorMessage": "An error occurred while updating your profile. Please try again.",
+    "fileLimitExceeded": "File size exceeds the limit of 5MB.",
+    "changeAvatar": "Change Avatar",
+    "validationError": {
+      "firstNameRequired": "First name is required.",
+      "lastNameRequired": "Last name is required.",
+      "emailRequired": "Email is required."
+    }
+  },
+  "Searchbar": {
+    "searchPlaceholder": "Type to search...",
+    "searchButton": "Search",
+    "noResults": "No results found."
   }
 }
