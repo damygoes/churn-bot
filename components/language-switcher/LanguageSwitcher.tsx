@@ -1,6 +1,7 @@
 'use client'
 
 import {
+  DEFAULT_LOCALE,
   type Locale,
   LOCALE_LABELS,
   SUPPORTED_LOCALES,
@@ -14,6 +15,7 @@ import {
   DropdownMenuRadioItem,
   DropdownMenuTrigger,
 } from '../ui/dropdown-menu/DropdownMenu'
+import { replaceLocaleInPath } from './utils'
 
 type Props = {
   __storybookLocaleOverride?: Locale
@@ -24,8 +26,12 @@ export function LanguageSwitcher({
   __storybookLocaleOverride,
   onLocaleChange,
 }: Props) {
-  const localeFromHook = useLocale() as Locale
-  const currentLocale = __storybookLocaleOverride ?? localeFromHook
+  const localeFromHook = useLocale()
+  const validatedLocale = SUPPORTED_LOCALES.includes(localeFromHook as Locale)
+    ? (localeFromHook as Locale)
+    : DEFAULT_LOCALE
+
+  const currentLocale = __storybookLocaleOverride ?? validatedLocale
 
   const pathname = usePathname()
   const router = useRouter()
@@ -34,12 +40,11 @@ export function LanguageSwitcher({
     if (onLocaleChange) {
       // Storybook interactive mode: only update state, skip router.push
       onLocaleChange(locale)
-    } else {
-      // Real app mode: update URL
-      const segments = pathname.split('/')
-      segments[1] = locale
-      router.push(segments.join('/'))
+      return
     }
+    // Real app mode: update URL
+    const newPath = replaceLocaleInPath(pathname, locale)
+    router.push(newPath)
   }
 
   return (
