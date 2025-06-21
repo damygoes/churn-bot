@@ -38,7 +38,7 @@ export function RangeDatePicker() {
     to: addDays(new Date(), 5),
   })
 
-  const [inputValue, setInputValue] = React.useState('')
+  const [inputValue, setInputValue] = React.useState('Select a date range')
 
   return (
     <div className="flex flex-col gap-3">
