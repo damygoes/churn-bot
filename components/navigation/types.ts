@@ -8,3 +8,10 @@ export type NavItem = {
 }
 
 export type NavItems = NavItem[]
+
+export type NavbarUser = {
+  name: string
+  email: string
+  avatar: string
+  fallback: string
+}

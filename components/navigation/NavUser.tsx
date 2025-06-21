@@ -22,19 +22,15 @@ import { ChevronsUpDown } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import Link from 'next/link'
 import { Icon } from '../ui/icon/Icon'
+import { NavbarUser } from './types'
 
-export function NavUser({
-  user,
-}: {
-  user: {
-    name: string
-    email: string
-    avatar: string
-  }
-}) {
+interface NavUserProps {
+  user: NavbarUser
+}
+
+export function NavUser({ user }: NavUserProps) {
   const { isMobile } = useSidebar()
   const t = useTranslations('Sidebar')
-  const fallback = user.name[0]?.toUpperCase() || 'U'
 
   return (
     <SidebarMenu>
@@ -46,9 +42,9 @@ export function NavUser({
               className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
             >
               <UserAvatar
-                src={user.avatar}
+                src={user.avatar ?? ''}
                 alt={user.name}
-                fallback={fallback}
+                fallback={user.fallback}
                 className="h-8 w-8 rounded-lg"
               />
               <div className="grid flex-1 text-left text-sm leading-tight">
@@ -69,7 +65,7 @@ export function NavUser({
                 <UserAvatar
                   src={user.avatar}
                   alt={user.name}
-                  fallback={fallback}
+                  fallback={user.fallback}
                   className="h-8 w-8 rounded-lg"
                 />
                 <div className="grid flex-1 text-left text-sm leading-tight">
@@ -107,3 +103,5 @@ export function NavUser({
     </SidebarMenu>
   )
 }
+
+NavUser.displayName = 'NavUser'

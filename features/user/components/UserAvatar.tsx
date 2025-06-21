@@ -6,21 +6,18 @@ import {
   AvatarImage,
 } from '@/components/ui/avatar/Avatar'
 
-export function UserAvatar({
-  src,
-  alt,
-  fallback,
-  className,
-}: {
-  src: string
-  alt: string
+interface UserAvatarProps {
+  src?: string
+  alt?: string
   fallback: string
   className?: string
-}) {
+}
+
+export function UserAvatar({ src, alt, fallback, className }: UserAvatarProps) {
   return (
     <Avatar className={className}>
-      <AvatarImage src={src} alt={alt} />
-      <AvatarFallback className="rounded-lg">{fallback}</AvatarFallback>
+      {src ? <AvatarImage src={src} alt={alt} /> : null}
+      <AvatarFallback>{fallback}</AvatarFallback>
     </Avatar>
   )
 }

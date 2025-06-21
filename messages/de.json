@@ -1,7 +1,8 @@
 {
   "LandingPage": {
     "title": "Erleben Sie die Kraft von ChurnBot",
-    "description": "Dies ist die Landing-Page unserer Anwendung. Entdecken Sie die Funktionen und Möglichkeiten, die wir bieten."
+    "description": "Dies ist die Landing-Page unserer Anwendung. Entdecken Sie die Funktionen und Möglichkeiten, die wir bieten.",
+    "getStarted": "Jetzt starten"
   },
   "Sidebar": {
     "dashboard": "Dashboard",
