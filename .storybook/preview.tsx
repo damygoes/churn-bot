@@ -1,5 +1,13 @@
+import type { Decorator } from '@storybook/nextjs'
 import type { Preview } from '@storybook/nextjs-vite'
 import '../app/styles/globals.css'
+import { AppRouterProvider } from './mocks/AppRouterProvider'
+
+const withAppRouterProvider: Decorator = (Story) => (
+  <AppRouterProvider>
+    <Story />
+  </AppRouterProvider>
+)
 
 const preview: Preview = {
   parameters: {
@@ -9,14 +17,11 @@ const preview: Preview = {
         date: /Date$/i,
       },
     },
-
     a11y: {
-      // 'todo' - show a11y violations in the test UI only
-      // 'error' - fail CI on a11y violations
-      // 'off' - skip a11y checks entirely
       test: 'todo',
     },
   },
+  decorators: [withAppRouterProvider],
 }
 
 export default preview

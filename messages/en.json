@@ -1,0 +1,14 @@
+{
+  "LandingPage": {
+    "title": "Experience the power of ChurnBot",
+    "description": "This is the landing page of our application. Explore the features and functionalities we offer."
+  },
+  "Dashboard": {
+    "title": "Welcome to the Dashboard",
+    "description": "This is your dashboard where you can manage your settings and view your data."
+  },
+  "Settings": {
+    "title": "Settings",
+    "description": "Adjust your preferences and settings here."
+  }
+}
