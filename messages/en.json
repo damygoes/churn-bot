@@ -1,7 +1,8 @@
 {
   "LandingPage": {
     "title": "Experience the power of ChurnBot",
-    "description": "This is the landing page of our application. Explore the features and functionalities we offer."
+    "description": "This is the landing page of our application. Explore the features and functionalities we offer.",
+    "getStarted": "Get Started"
   },
   "Sidebar": {
     "dashboard": "Dashboard",

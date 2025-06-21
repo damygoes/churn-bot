@@ -16,9 +16,14 @@ import { MainNav } from '../navigation/MainNav'
 import { NavSecondary } from '../navigation/NavSecondary'
 import { NavUser } from '../navigation/NavUser'
 import { sidebarLinks } from '../navigation/constants'
+import { NavbarUser } from '../navigation/types'
 import { Icon } from '../ui/icon/Icon'
 
-export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+interface AppSidebarProps extends React.ComponentProps<typeof Sidebar> {
+  user?: NavbarUser
+}
+
+export function AppSidebar({ user, ...props }: AppSidebarProps) {
   return (
     <Sidebar
       className="top-(--header-height) h-[calc(100svh-var(--header-height))]!"
@@ -45,9 +50,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <MainNav data={sidebarLinks.navMain} />
         <NavSecondary data={sidebarLinks.navSecondary} className="mt-auto" />
       </SidebarContent>
-      <SidebarFooter>
-        <NavUser user={sidebarLinks.user} />
-      </SidebarFooter>
+      <SidebarFooter>{user && <NavUser user={user} />}</SidebarFooter>
     </Sidebar>
   )
 }
