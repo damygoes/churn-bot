@@ -1,22 +1,13 @@
-import type { Meta, StoryObj } from "@storybook/nextjs";
-import {
-  AlertTriangle,
-  CheckCircle,
-  Info,
-  XCircle,
-} from "lucide-react";
-import {
-  Alert,
-  AlertDescription,
-  AlertTitle,
-} from "./Alert";
+import type { Meta, StoryObj } from '@storybook/nextjs'
+import { AlertTriangle, CheckCircle, Info, XCircle } from 'lucide-react'
+import { Alert, AlertDescription, AlertTitle } from './Alert'
 
 const meta: Meta<typeof Alert> = {
-  title: "Feedback/Alert",
+  title: 'Feedback/Alert',
   component: Alert,
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
 }
 export default meta

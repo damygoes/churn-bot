@@ -1,15 +1,15 @@
-import type { Meta, StoryFn, StoryObj } from "@storybook/nextjs";
-import { Icon } from '../icon/Icon';
-import { Label } from "../label/Label";
-import { Separator } from '../separator/Separator';
-import { Checkbox } from "./Checkbox";
+import type { Meta, StoryFn, StoryObj } from '@storybook/nextjs'
+import { Icon } from '../icon/Icon'
+import { Label } from '../label/Label'
+import { Separator } from '../separator/Separator'
+import { Checkbox } from './Checkbox'
 
 const meta: Meta<typeof Checkbox> = {
-  title: "Primitives/Checkbox",
+  title: 'Primitives/Checkbox',
   component: Checkbox,
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
 }
 export default meta
@@ -46,9 +46,8 @@ export const States: StoryFn<Story> = () => {
         </div>
       </div>
     </section>
-  );
-};
-
+  )
+}
 
 export const WithIcons: Story = {
   render: () => (
@@ -57,21 +56,21 @@ export const WithIcons: Story = {
         <Checkbox id="notify" defaultChecked />
         <Label htmlFor="notify" className="flex items-center gap-1">
           Notify me
-          <Icon name='notifications' size='md' />
+          <Icon name="notifications" size="md" />
         </Label>
       </div>
       <div className="flex items-center gap-2">
         <Checkbox id="verified" />
         <Label htmlFor="verified" className="flex items-center gap-1">
           Verified
-          <Icon name='check-circle' size='md' />
+          <Icon name="check-circle" size="md" />
         </Label>
       </div>
       <div className="flex items-center gap-2">
         <Checkbox id="warning" />
         <Label htmlFor="warning" className="flex items-center gap-1">
           Show warnings
-          <Icon name='alert-circle' size='md' />
+          <Icon name="alert-circle" size="md" />
         </Label>
       </div>
     </div>

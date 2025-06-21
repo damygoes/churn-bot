@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from "@storybook/nextjs";
-import { Button } from "../button/Button";
+import type { Meta, StoryObj } from '@storybook/nextjs'
+import { Button } from '../button/Button'
 import {
   Dialog,
   DialogClose,
@@ -9,12 +9,12 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "./Dialog";
+} from './Dialog'
 
 const meta: Meta<typeof Dialog> = {
-  title: "Overlays/Dialog",
+  title: 'Overlays/Dialog',
   component: Dialog,
-  tags: ["autodocs"],
+  tags: ['autodocs'],
 }
 
 export default meta

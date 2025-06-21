@@ -1,16 +1,20 @@
-import type { Meta, StoryObj } from "@storybook/nextjs";
-import { SingleDatePicker } from "./SingleDatePicker";
+import type { Meta, StoryObj } from '@storybook/nextjs'
+import { SingleDatePicker } from './SingleDatePicker'
 
 const meta: Meta<typeof SingleDatePicker> = {
-  title: "Feedback/DatePicker/Single",
+  title: 'Feedback/DatePicker/Single',
   component: SingleDatePicker,
-  tags: ["autodocs"],
-};
+  tags: ['autodocs'],
+}
 
-export default meta;
+export default meta
 
-type Story = StoryObj<typeof SingleDatePicker>;
+type Story = StoryObj<typeof SingleDatePicker>
 
 export const Default: Story = {
-  render: () => <div className='flex items-center justify-center max-w-md'><SingleDatePicker /></div>,
-};
+  render: () => (
+    <div className="flex items-center justify-center max-w-md">
+      <SingleDatePicker />
+    </div>
+  ),
+}

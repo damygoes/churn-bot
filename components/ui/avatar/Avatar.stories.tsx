@@ -1,13 +1,13 @@
-import type { Meta, StoryObj } from "@storybook/nextjs";
-import { User } from "lucide-react";
-import { Avatar, AvatarFallback, AvatarImage } from "./Avatar";
+import type { Meta, StoryObj } from '@storybook/nextjs'
+import { User } from 'lucide-react'
+import { Avatar, AvatarFallback, AvatarImage } from './Avatar'
 
 const meta: Meta<typeof Avatar> = {
-  title: "Primitives/Avatar",
+  title: 'Primitives/Avatar',
   component: Avatar,
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
 }
 export default meta

@@ -1,6 +1,6 @@
-import type { Meta, StoryFn } from "@storybook/nextjs";
-import React from 'react';
-import { Button } from '../button/Button';
+import type { Meta, StoryFn } from '@storybook/nextjs'
+import React from 'react'
+import { Button } from '../button/Button'
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -15,18 +15,18 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from "./DropdownMenu";
+} from './DropdownMenu'
 
 const meta: Meta = {
-  title: "Navigation/DropdownMenu",
+  title: 'Navigation/DropdownMenu',
   component: DropdownMenu,
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
-  tags: ["autodocs"],
-};
+  tags: ['autodocs'],
+}
 
-export default meta;
+export default meta
 
 export const Default: StoryFn = () => (
   <DropdownMenu>
@@ -45,11 +45,11 @@ export const Default: StoryFn = () => (
       <DropdownMenuItem variant="destructive">Delete</DropdownMenuItem>
     </DropdownMenuContent>
   </DropdownMenu>
-);
+)
 
 export const WithCheckboxItems: StoryFn = () => {
-  const [showLineNumbers, setShowLineNumbers] = React.useState(true);
-  const [wrapText, setWrapText] = React.useState(false);
+  const [showLineNumbers, setShowLineNumbers] = React.useState(true)
+  const [wrapText, setWrapText] = React.useState(false)
 
   return (
     <DropdownMenu>
@@ -72,11 +72,11 @@ export const WithCheckboxItems: StoryFn = () => {
         </DropdownMenuCheckboxItem>
       </DropdownMenuContent>
     </DropdownMenu>
-  );
-};
+  )
+}
 
 export const WithRadioItems: StoryFn = () => {
-  const [theme, setTheme] = React.useState("light");
+  const [theme, setTheme] = React.useState('light')
 
   return (
     <DropdownMenu>
@@ -92,8 +92,8 @@ export const WithRadioItems: StoryFn = () => {
         </DropdownMenuRadioGroup>
       </DropdownMenuContent>
     </DropdownMenu>
-  );
-};
+  )
+}
 
 export const WithSubmenu: StoryFn = () => (
   <DropdownMenu>
@@ -114,4 +114,4 @@ export const WithSubmenu: StoryFn = () => (
       <DropdownMenuItem>Settings</DropdownMenuItem>
     </DropdownMenuContent>
   </DropdownMenu>
-);
+)

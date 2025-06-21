@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/nextjs";
+import type { Meta, StoryObj } from '@storybook/nextjs'
 import {
   Drawer,
   DrawerClose,
@@ -8,14 +8,14 @@ import {
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
-} from "./Drawer";
+} from './Drawer'
 
-import { Button } from "../button/Button";
+import { Button } from '../button/Button'
 
 const meta: Meta<typeof Drawer> = {
-  title: "Overlays/Drawer",
+  title: 'Overlays/Drawer',
   component: Drawer,
-  tags: ["autodocs"],
+  tags: ['autodocs'],
 }
 
 export default meta
@@ -23,9 +23,9 @@ export default meta
 type Story = StoryObj<typeof Drawer>
 
 const DrawerTemplate = ({
-  side = "bottom",
+  side = 'bottom',
 }: {
-  side?: "bottom" | "top" | "left" | "right"
+  side?: 'bottom' | 'top' | 'left' | 'right'
 }) => (
   <div className="p-10">
     <Drawer direction={side}>
@@ -36,7 +36,9 @@ const DrawerTemplate = ({
       <DrawerContent>
         <DrawerHeader>
           <DrawerTitle>Drawer Title</DrawerTitle>
-          <DrawerDescription>This is a description inside the drawer.</DrawerDescription>
+          <DrawerDescription>
+            This is a description inside the drawer.
+          </DrawerDescription>
         </DrawerHeader>
         <div className="p-4">
           <p>Drawer content goes here.</p>
@@ -53,17 +55,17 @@ const DrawerTemplate = ({
 )
 
 export const Default: Story = {
-  render: () => DrawerTemplate({ side: "bottom" }),
+  render: () => DrawerTemplate({ side: 'bottom' }),
 }
 
 export const TopDrawer: Story = {
-  render: () => DrawerTemplate({ side: "top" }),
+  render: () => DrawerTemplate({ side: 'top' }),
 }
 
 export const LeftDrawer: Story = {
-  render: () => DrawerTemplate({ side: "left" }),
+  render: () => DrawerTemplate({ side: 'left' }),
 }
 
 export const RightDrawer: Story = {
-  render: () => DrawerTemplate({ side: "right" }),
+  render: () => DrawerTemplate({ side: 'right' }),
 }

@@ -1,15 +1,15 @@
-import type { Meta, StoryObj } from "@storybook/nextjs";
-import { Icon } from '../icon/Icon';
-import { Badge } from "./Badge";
+import type { Meta, StoryObj } from '@storybook/nextjs'
+import { Icon } from '../icon/Icon'
+import { Badge } from './Badge'
 
 const meta: Meta<typeof Badge> = {
-  title: "Primitives/Badge",
+  title: 'Primitives/Badge',
   component: Badge,
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   argTypes: {
     variant: {
-      control: "select",
-      options: ["default", "secondary", "destructive", "outline"],
+      control: 'select',
+      options: ['default', 'secondary', 'destructive', 'outline'],
     },
   },
 }
@@ -20,16 +20,16 @@ type Story = StoryObj<typeof Badge>
 // --- Default badge ---
 export const Default: Story = {
   args: {
-    children: "Active",
-    variant: "default",
+    children: 'Active',
+    variant: 'default',
   },
 }
 
 // --- Secondary badge ---
 export const Secondary: Story = {
   args: {
-    children: "In Progress",
-    variant: "secondary",
+    children: 'In Progress',
+    variant: 'secondary',
   },
 }
 
@@ -37,7 +37,7 @@ export const Secondary: Story = {
 export const Destructive: Story = {
   render: () => (
     <Badge variant="destructive">
-      <Icon name='alert-circle' size='lg' />
+      <Icon name="alert-circle" size="lg" />
       Error
     </Badge>
   ),
@@ -46,7 +46,7 @@ export const Destructive: Story = {
 // --- Outline badge ---
 export const Outline: Story = {
   args: {
-    children: "Beta",
-    variant: "outline",
+    children: 'Beta',
+    variant: 'outline',
   },
 }
