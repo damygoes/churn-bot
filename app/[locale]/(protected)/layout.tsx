@@ -29,7 +29,9 @@ export default async function AppLayout({
           <AppSidebar user={appUser} />
           <SidebarInset>
             <SyncClerkUser />
+            {/* <div className='bg-destructive w-full h-full p-2'> */}
             {children}
+            {/* </div> */}
           </SidebarInset>
         </div>
       </SidebarProvider>
