@@ -21,6 +21,7 @@
     "@aws-sdk/client-s3": "^3.832.0",
     "@aws-sdk/s3-presigned-post": "^3.832.0",
     "@clerk/nextjs": "^6.22.0",
+    "@hookform/resolvers": "^5.1.1",
     "@neondatabase/serverless": "^1.0.1",
     "@radix-ui/react-accordion": "^1.2.11",
     "@radix-ui/react-avatar": "^1.1.10",
@@ -47,8 +48,10 @@
     "react": "^19.0.0",
     "react-day-picker": "^9.7.0",
     "react-dom": "^19.0.0",
+    "react-hook-form": "^7.58.1",
     "tailwind-merge": "^3.3.1",
-    "vaul": "^1.1.2"
+    "vaul": "^1.1.2",
+    "zod": "^3.25.67"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^4.0.1",

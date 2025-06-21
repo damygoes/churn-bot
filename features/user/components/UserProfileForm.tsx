@@ -2,48 +2,73 @@
 
 import { updateUserProfile } from '@/actions/users.actions'
 import { Button } from '@/components/ui/button/Button'
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from '@/components/ui/form/Form'
 import { Input } from '@/components/ui/input/Input'
-import { Label } from '@/components/ui/label/Label'
 import { UserAvatar } from '@/features/user/components/UserAvatar'
 import { uploadToS3Presigned } from '@/lib/utils'
 import { AppUser } from '@/types/AppUser'
-import React, { useEffect, useState } from 'react'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useTranslations } from 'next-intl'
+import { useEffect, useState } from 'react'
+import { useForm } from 'react-hook-form'
+import * as z from 'zod'
+
+const profileSchema = z.object({
+  firstName: z.string().min(1, 'First name is required'),
+  lastName: z.string().min(1, 'Last name is required'),
+  email: z.string().email('Invalid email address'),
+})
+
+type ProfileValues = z.infer<typeof profileSchema>
 
 interface ProfileFormProps {
   user: AppUser
 }
 
 export default function ProfileForm({ user }: ProfileFormProps) {
-  const [firstName, setFirstName] = useState(user?.firstName || '')
-  const [lastName, setLastName] = useState(user?.lastName || '')
-  const [avatarUrl] = useState(user?.avatarUrl || '')
+  const t = useTranslations('ProfileForm')
   const [file, setFile] = useState<File | null>(null)
-  const [preview, setPreview] = useState<string | null>(avatarUrl)
+  const [preview, setPreview] = useState<string | null>(user?.avatarUrl || '')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
-  // Show preview when file is selected
+  const form = useForm<ProfileValues>({
+    resolver: zodResolver(profileSchema),
+    defaultValues: {
+      firstName: user?.firstName || '',
+      lastName: user?.lastName || '',
+      email: user?.email || '',
+    },
+  })
+
   useEffect(() => {
     if (!file) {
-      setPreview(avatarUrl)
+      setPreview(user?.avatarUrl || '')
       return
     }
+
     const objectUrl = URL.createObjectURL(file)
     setPreview(objectUrl)
 
     return () => URL.revokeObjectURL(objectUrl)
-  }, [file, avatarUrl])
+  }, [file, user?.avatarUrl])
 
-  async function onSubmit(e: React.FormEvent) {
-    e.preventDefault()
+  async function onSubmit(values: ProfileValues) {
     setLoading(true)
     setError(null)
 
     try {
-      let uploadedAvatarUrl = avatarUrl
+      let uploadedAvatarUrl = user?.avatarUrl
       if (file) {
         if (file.size > 5 * 1024 * 1024) {
-          throw new Error('File size exceeds 5MB limit.')
+          throw new Error(t('fileLimitExceeded'))
         }
         uploadedAvatarUrl = await uploadToS3Presigned(file)
       }
@@ -52,17 +77,16 @@ export default function ProfileForm({ user }: ProfileFormProps) {
 
       await updateUserProfile({
         clerkUserId: user.clerkUserId,
-        firstName,
-        lastName,
-        avatarUrl: uploadedAvatarUrl,
+        avatarUrl: uploadedAvatarUrl ?? undefined,
+        ...values,
       })
 
-      alert('Profile updated!')
+      alert(t('successMessage')) // replace with Sonner or Toast
     } catch (err) {
       if (err instanceof Error) {
         setError(err.message)
       } else {
-        setError('Something went wrong.')
+        setError(t('errorMessage'))
       }
     } finally {
       setLoading(false)
@@ -70,47 +94,87 @@ export default function ProfileForm({ user }: ProfileFormProps) {
   }
 
   const avatarFallback =
-    firstName?.[0]?.toUpperCase() ?? user?.email?.[0]?.toUpperCase() ?? '?'
+    user?.firstName?.[0]?.toUpperCase() ??
+    user?.email?.[0]?.toUpperCase() ??
+    '?'
 
   return (
-    <form onSubmit={onSubmit} className="max-w-md w-full space-y-6">
-      <div>
-        <Label className="block mb-2 font-semibold">Avatar</Label>
-        <UserAvatar
-          src={preview || ''}
-          alt={firstName || 'User Avatar'}
-          fallback={avatarFallback}
-          className="h-24 w-24 rounded-lg mb-2"
-        />
-        <Input
-          type="file"
-          accept="image/*"
-          onChange={(e) => setFile(e.target.files?.[0] || null)}
-        />
-      </div>
+    <Form {...form}>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="w-3xl space-y-6">
+        <div className="flex justify-start items-start gap-8 w-full">
+          <div className="flex items-center justify-center gap-4 w-1/3 h-full">
+            <div className="relative group cursor-pointer">
+              <label htmlFor="avatar-upload">
+                <UserAvatar
+                  src={preview || ''}
+                  alt={user?.firstName || 'User Avatar'}
+                  fallback={avatarFallback}
+                  className="h-full w-full rounded-lg transition-opacity group-hover:opacity-80"
+                />
+                <div className="absolute inset-0 flex items-center justify-center w-full bg-black/30 text-white text-xs opacity-0 group-hover:opacity-100 transition-opacity rounded-lg">
+                  {t('changeAvatar')}
+                </div>
+              </label>
+              <input
+                id="avatar-upload"
+                type="file"
+                accept="image/*"
+                onChange={(e) => setFile(e.target.files?.[0] || null)}
+                className="hidden"
+              />
+            </div>
+          </div>
+          <div className="space-y-6 grow h-full">
+            <FormField
+              control={form.control}
+              name="firstName"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>{t('firstName')}</FormLabel>
+                  <FormControl>
+                    <Input type="text" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
 
-      <div>
-        <Label className="block mb-1 font-semibold">First Name</Label>
-        <Input
-          type="text"
-          value={firstName}
-          onChange={(e) => setFirstName(e.target.value)}
-        />
-      </div>
+            <FormField
+              control={form.control}
+              name="lastName"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>{t('lastName')}</FormLabel>
+                  <FormControl>
+                    <Input type="text" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
 
-      <div>
-        <Label className="block mb-1 font-semibold">Last Name</Label>
-        <Input
-          type="text"
-          value={lastName}
-          onChange={(e) => setLastName(e.target.value)}
-        />
-      </div>
-
-      {error && <p className="text-red-500 text-sm">{error}</p>}
-      <Button type="submit" disabled={loading}>
-        {loading ? 'Saving...' : 'Save Changes'}
-      </Button>
-    </form>
+            <FormField
+              control={form.control}
+              name="email"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>{t('email')}</FormLabel>
+                  <FormControl>
+                    <Input type="text" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
+        </div>
+        {error && <p className="text-sm text-destructive">{error}</p>}
+        <div className="w-full justify-end items-center flex">
+          <Button type="submit" disabled={loading}>
+            {loading ? t('updating') : t('saveChanges')}
+          </Button>
+        </div>
+      </form>
+    </Form>
   )
 }

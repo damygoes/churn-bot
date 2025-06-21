@@ -6,5 +6,9 @@ export default async function UserProfile() {
 
   if (!user) return <div>User not found</div>
 
-  return <ProfileForm user={user} />
+  return (
+    <div className="flex w-full h-full justify-center items-center">
+      <ProfileForm user={user} />
+    </div>
+  )
 }
