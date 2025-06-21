@@ -1,12 +1,5 @@
-import { LanguageSwitcher } from '@/components/language-switcher/LanguageSwitcher'
 import { routing } from '@/lib/i18n/routing'
-import {
-  ClerkProvider,
-  SignInButton,
-  SignedIn,
-  SignedOut,
-  UserButton,
-} from '@clerk/nextjs'
+import { ClerkProvider } from '@clerk/nextjs'
 import type { Metadata } from 'next'
 import { NextIntlClientProvider, hasLocale } from 'next-intl'
 import { Geist, Geist_Mono } from 'next/font/google'
@@ -41,25 +34,14 @@ export default async function RootLayout({
     notFound()
   }
   return (
-    <ClerkProvider>
-      <html lang={locale}>
+    <html lang={locale} className="scrollbar-hide">
+      <ClerkProvider>
         <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+          className={`${geistSans.variable} ${geistMono.variable} antialiased scrollbar-hide`}
         >
-          <NextIntlClientProvider>
-            <header className="flex justify-end items-center p-4 gap-4 h-16">
-              <SignedOut>
-                <SignInButton />
-              </SignedOut>
-              <LanguageSwitcher />
-              <SignedIn>
-                <UserButton />
-              </SignedIn>
-            </header>
-            {children}
-          </NextIntlClientProvider>
+          <NextIntlClientProvider>{children}</NextIntlClientProvider>
         </body>
-      </html>
-    </ClerkProvider>
+      </ClerkProvider>
+    </html>
   )
 }

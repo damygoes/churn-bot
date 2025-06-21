@@ -3,6 +3,26 @@
     "title": "Erleben Sie die Kraft von ChurnBot",
     "description": "Dies ist die Landing-Page unserer Anwendung. Entdecken Sie die Funktionen und Möglichkeiten, die wir bieten."
   },
+  "Sidebar": {
+    "dashboard": "Dashboard",
+    "metrics": "Metriken",
+    "integrations": "Integrationen",
+    "team": "Team",
+    "settings": "Einstellungen",
+    "upgrade": "Upgrade",
+    "profile": "Profil",
+    "billing": "Abrechnung",
+    "notifications": "Benachrichtigungen"
+  },
+  "Auth": {
+    "login": "Anmelden",
+    "logout": "Abmelden"
+  },
+  "ErrorBoundary": {
+    "title": "Sie haben ein totes Diagramm gefunden",
+    "description": "Diese Seite scheint nicht zu existieren – genau wie einige unserer KPIs im letzten Quartal.",
+    "action": "Zurück zur Sicherheit"
+  },
   "Dashboard": {
     "title": "Willkommen im Dashboard",
     "description": "Dies ist Ihr Dashboard, in dem Sie Ihre Einstellungen verwalten und Ihre Daten anzeigen können."

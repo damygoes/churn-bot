@@ -3,6 +3,26 @@
     "title": "Experience the power of ChurnBot",
     "description": "This is the landing page of our application. Explore the features and functionalities we offer."
   },
+  "Sidebar": {
+    "dashboard": "Dashboard",
+    "metrics": "Metrics",
+    "integrations": "Integrations",
+    "team": "Team",
+    "settings": "Settings",
+    "upgrade": "Upgrade",
+    "profile": "Profile",
+    "billing": "Billing",
+    "notifications": "Notifications"
+  },
+  "Auth": {
+    "login": "Login",
+    "logout": "Logout"
+  },
+  "ErrorBoundary": {
+    "title": "You’ve hit a dead chart",
+    "description": "Looks like this page doesn’t exist — just like some of our KPIs last quarter.",
+    "action": "Go back to safety"
+  },
   "Dashboard": {
     "title": "Welcome to the Dashboard",
     "description": "This is your dashboard where you can manage your settings and view your data."

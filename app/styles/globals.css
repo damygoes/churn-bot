@@ -120,3 +120,23 @@
     @apply bg-background text-foreground;
   }
 }
+
+@layer utilities {
+  .glass {
+    @apply backdrop-blur-xs bg-background/80 border-b border-border shadow-sm rounded-2xl;
+  }
+}
+
+@layer utilities {
+  .scrollbar-hide,
+  html.scrollbar-hide,
+  body.scrollbar-hide {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE 10+ */
+  }
+  .scrollbar-hide::-webkit-scrollbar,
+  html.scrollbar-hide::-webkit-scrollbar,
+  body.scrollbar-hide::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
+  }
+}
