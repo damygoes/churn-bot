@@ -16,7 +16,7 @@ interface UserAvatarProps {
 export function UserAvatar({ src, alt, fallback, className }: UserAvatarProps) {
   return (
     <Avatar className={className}>
-      {src ? <AvatarImage src={src} alt={alt} /> : null}
+      {src ? <AvatarImage src={src} alt={alt ?? ''} /> : null}
       <AvatarFallback>{fallback}</AvatarFallback>
     </Avatar>
   )
