@@ -4,23 +4,12 @@ import { LanguageSwitcher } from '@/components/language-switcher/LanguageSwitche
 import LoginButton from '@/features/auth/login/LoginButton'
 import { useScrolled } from '@/hooks/useScrolled'
 import { cn } from '@/lib/utils'
-import { SignedOut, useAuth } from '@clerk/nextjs'
-import { useLocale, useTranslations } from 'next-intl'
-import { useRouter } from 'next/navigation'
-import { useEffect } from 'react'
+import { SignedOut } from '@clerk/nextjs'
+import { useTranslations } from 'next-intl'
 
 export default function Home() {
   const t = useTranslations('LandingPage')
   const scrolled = useScrolled(0)
-  const { isSignedIn } = useAuth()
-  const router = useRouter()
-  const locale = useLocale()
-
-  useEffect(() => {
-    if (isSignedIn) {
-      router.replace(`/${locale}/dashboard`)
-    }
-  }, [isSignedIn, locale, router])
 
   return (
     <div className="relative flex flex-col items-start justify-start min-h-screen gap-8 bg-background p-8 scrollbar-hide sm:p-20 sm:pt-4">

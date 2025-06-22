@@ -21,17 +21,25 @@ export async function upsertUser({
     where: eq(users.clerkUserId, clerkUserId),
   })
 
-  if (existingUser) {
-    await db
-      .update(users)
-      .set({ email, firstName, lastName })
-      .where(eq(users.clerkUserId, clerkUserId))
-  } else {
+  if (!existingUser) {
     await db.insert(users).values({ clerkUserId, email, firstName, lastName })
-  }
+  } else {
+    const shouldUpdate =
+      !existingUser.firstName ||
+      !existingUser.lastName ||
+      existingUser.email !== email
 
-  // Optional: if any route relies on this user data
-  // revalidatePath('/dashboard')
+    if (shouldUpdate) {
+      await db
+        .update(users)
+        .set({
+          firstName: existingUser.firstName || firstName,
+          lastName: existingUser.lastName || lastName,
+          email, // always use latest email from Clerk
+        })
+        .where(eq(users.clerkUserId, clerkUserId))
+    }
+  }
 }
 
 export async function getCurrentUser() {
