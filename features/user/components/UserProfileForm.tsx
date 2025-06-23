@@ -1,6 +1,5 @@
 'use client'
 
-import { updateUserProfile } from '@/actions/users.actions'
 import { Button } from '@/components/ui/button/Button'
 import {
   Form,
@@ -19,6 +18,8 @@ import { useTranslations } from 'next-intl'
 import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import * as z from 'zod'
+import { updateUserProfile } from '../actions'
+import { DefaultUserIcon } from './DefaultUserIcon'
 
 const profileSchema = z.object({
   firstName: z.string().min(1, 'First name is required'),
@@ -101,20 +102,27 @@ export default function ProfileForm({ user }: ProfileFormProps) {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="w-3xl space-y-6">
-        <div className="flex justify-start items-start gap-8 w-full">
-          <div className="flex items-center justify-center gap-4 w-1/3 h-full">
-            <div className="relative group cursor-pointer">
-              <label htmlFor="avatar-upload">
+        <div className="flex justify-start items-start gap-8 min-h-[14rem]">
+          <div className="flex items-start justify-center w-1/3">
+            <div className="relative group cursor-pointer w-full h-[14rem] rounded-lg overflow-hidden border border-border bg-gray-50 flex items-center justify-center">
+              <label
+                htmlFor="avatar-upload"
+                className="absolute inset-0 flex items-center justify-center bg-black/30 text-white text-xs opacity-0 group-hover:opacity-100 transition-opacity rounded-lg cursor-pointer"
+              >
+                {t('changeAvatar')}
+              </label>
+
+              {preview ? (
                 <UserAvatar
-                  src={preview || ''}
+                  src={preview}
                   alt={user?.firstName || 'User Avatar'}
                   fallback={avatarFallback}
-                  className="h-full w-full rounded-lg transition-opacity group-hover:opacity-80"
+                  className="w-full h-full object-cover rounded-lg transition-opacity group-hover:opacity-80"
                 />
-                <div className="absolute inset-0 flex items-center justify-center w-full bg-black/30 text-white text-xs opacity-0 group-hover:opacity-100 transition-opacity rounded-lg">
-                  {t('changeAvatar')}
-                </div>
-              </label>
+              ) : (
+                <DefaultUserIcon />
+              )}
+
               <input
                 id="avatar-upload"
                 type="file"
@@ -124,6 +132,7 @@ export default function ProfileForm({ user }: ProfileFormProps) {
               />
             </div>
           </div>
+
           <div className="space-y-6 grow h-full">
             <FormField
               control={form.control}

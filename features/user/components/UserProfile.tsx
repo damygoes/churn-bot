@@ -1,4 +1,4 @@
-import { getCurrentUser } from '@/actions/users.actions'
+import { getCurrentUser } from '../actions'
 import ProfileForm from './UserProfileForm'
 
 export default async function UserProfile() {
