@@ -27,7 +27,7 @@ export const Variants: Story = {
       </Alert>
 
       {/* Destructive */}
-      <Alert variant="destructive">
+      <Alert className="bg-destructive">
         <XCircle className="mt-0.5" />
         <AlertTitle>Error Alert</AlertTitle>
         <AlertDescription>

@@ -2,7 +2,10 @@
 
 import { getTemplatesWithIntegrations } from '@/actions/workspace.actions'
 import { Button } from '@/components/ui/button/Button'
+import { useTranslations } from 'next-intl'
 import { useState } from 'react'
+import { createWorkspacesFromTemplates } from '../lib/createWorkspaces'
+import OnboardingSuccessAlert from './OnboardingSuccessAlert'
 import WorkspaceCard from './WorkspaceCard'
 
 export default function OnboardingShell({
@@ -10,9 +13,11 @@ export default function OnboardingShell({
 }: {
   templates: Awaited<ReturnType<typeof getTemplatesWithIntegrations>>
 }) {
+  const t = useTranslations('Onboarding')
   const [selectedTemplates, setSelectedTemplates] = useState<string[]>([])
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const [showSuccessAlert, setShowSuccessAlert] = useState(false)
 
   const toggleTemplate = (id: string) => {
     setSelectedTemplates((prev) =>
@@ -24,18 +29,10 @@ export default function OnboardingShell({
     try {
       setIsSubmitting(true)
       setError(null)
-
-      for (const templateId of selectedTemplates) {
-        // Create workspace for each selected template
-        await fetch('/api/onboarding', {
-          method: 'POST',
-          body: JSON.stringify({ name: templateId, templateId }),
-        })
-      }
-
-      window.location.href = '/dashboard' // or redirect to first workspace
+      await createWorkspacesFromTemplates(selectedTemplates)
+      setShowSuccessAlert(true)
     } catch (err) {
-      setError('Something went wrong while creating workspaces.')
+      setError(t('errorCreatingWorkspaces'))
       console.error('Error creating workspaces:', err)
     } finally {
       setIsSubmitting(false)
@@ -44,7 +41,7 @@ export default function OnboardingShell({
 
   return (
     <div className="max-w-3xl mx-auto p-6 space-y-6">
-      <h1 className="text-2xl font-bold">Choose Your Workspaces</h1>
+      <h1 className="text-2xl font-bold">{t('selectTemplates')}</h1>
 
       <div className="grid gap-4 grid-cols-1 md:grid-cols-2">
         {templates.map((template) => (
@@ -53,6 +50,7 @@ export default function OnboardingShell({
             template={template}
             selected={selectedTemplates.includes(template.id)}
             toggle={toggleTemplate}
+            disabled={isSubmitting || showSuccessAlert}
           />
         ))}
       </div>
@@ -60,11 +58,19 @@ export default function OnboardingShell({
       {error && <p className="text-red-500 text-sm">{error}</p>}
 
       <Button
-        disabled={isSubmitting || selectedTemplates.length === 0}
+        disabled={
+          isSubmitting || selectedTemplates.length === 0 || showSuccessAlert
+        }
         onClick={handleSubmit}
+        isLoading={isSubmitting}
       >
-        {isSubmitting ? 'Creating...' : 'Continue'}
+        {isSubmitting ? t('creatingWorkspaces') : t('continue')}
       </Button>
+      {showSuccessAlert ? (
+        <div className="w-full my-8">
+          <OnboardingSuccessAlert />
+        </div>
+      ) : null}
     </div>
   )
 }

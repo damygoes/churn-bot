@@ -1,4 +1,7 @@
 {
+  "Common": {
+    "includes": "Includes"
+  },
   "LandingPage": {
     "title": "Experience the power of ChurnBot",
     "description": "This is the landing page of our application. Explore the features and functionalities we offer.",
@@ -52,5 +55,23 @@
     "searchPlaceholder": "Type to search...",
     "searchButton": "Search",
     "noResults": "No results found."
+  },
+  "Onboarding": {
+    "selectTemplates": "Choose your Workspaces",
+    "errorCreatingWorkspaces": "An error occurred while creating the workspace. Please try again.",
+    "workspaceCreationSuccess": "Workspace created successfully!",
+    "continue": "Continue",
+    "creatingWorkspaces": "Creating Workspaces...",
+    "SuccessAlert": {
+      "title": "Workspaces created successfully!",
+      "description": "Your workspace has been created. To get the most out of it, make sure to connect the necessary integrations in the Integrations tab.",
+      "buttonText": "Go to Integrations"
+    }
+  },
+  "Workspaces": {
+    "Finance": "Finance",
+    "Marketing": "Marketing",
+    "Sales": "Sales",
+    "Development": "Development"
   }
 }

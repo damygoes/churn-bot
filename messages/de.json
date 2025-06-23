@@ -1,4 +1,7 @@
 {
+  "Common": {
+    "includes": "Enthält"
+  },
   "LandingPage": {
     "title": "Erleben Sie die Kraft von ChurnBot",
     "description": "Dies ist die Landing-Page unserer Anwendung. Entdecken Sie die Funktionen und Möglichkeiten, die wir bieten.",
@@ -52,5 +55,23 @@
     "searchPlaceholder": "Sucheingabe...",
     "searchButton": "Suchen",
     "noResults": "Keine Ergebnisse gefunden."
+  },
+  "Onboarding": {
+    "selectTemplates": "Wählen Sie Ihre Arbeitsbereiche",
+    "errorCreatingWorkspaces": "Ein Fehler ist beim Erstellen des Arbeitsbereichs aufgetreten. Bitte versuchen Sie es erneut.",
+    "workspaceCreationSuccess": "Arbeitsbereich erfolgreich erstellt!",
+    "continue": "Weiter",
+    "creatingWorkspaces": "Arbeitsbereiche werden erstellt...",
+    "SuccessAlert": {
+      "title": "Arbeitsbereiche erfolgreich erstellt!",
+      "description": "Ihr Arbeitsbereich wurde erstellt. Um ihn optimal zu nutzen, stellen Sie sicher, dass Sie die erforderlichen Integrationen im Tab „Integrationen“ verbinden.",
+      "buttonText": "Zum Integrationen-Tab"
+    }
+  },
+  "Workspaces": {
+    "Finance": "Finanzen",
+    "Marketing": "Marketing",
+    "Sales": "Vertrieb",
+    "Development": "Entwicklung"
   }
 }

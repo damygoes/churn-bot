@@ -2,7 +2,7 @@ import { db } from '@/db/drizzle'
 import { users } from '@/db/schema'
 import { auth, clerkClient } from '@clerk/nextjs/server'
 import { eq } from 'drizzle-orm'
-import { redirect } from 'next/navigation'
+import { NextResponse } from 'next/server'
 
 export async function GET(
   request: Request,
@@ -11,7 +11,9 @@ export async function GET(
   const { locale } = params
   const { userId } = await auth()
 
-  if (!userId) return redirect(`/${locale}`) // redirect to landing with locale
+  if (!userId) {
+    return NextResponse.redirect(new URL(`/${locale}`, request.url))
+  }
 
   let user = await db.query.users.findFirst({
     where: eq(users.clerkUserId, userId),
@@ -35,9 +37,9 @@ export async function GET(
     })
   }
 
-  if (user?.onboarded) {
-    redirect(`/${locale}/dashboard`)
-  } else {
-    redirect(`/${locale}/onboarding`)
-  }
+  const targetPath = user?.onboarded
+    ? `/${locale}/dashboard`
+    : `/${locale}/onboarding`
+
+  return NextResponse.redirect(new URL(targetPath, request.url))
 }

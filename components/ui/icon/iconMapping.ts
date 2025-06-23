@@ -4,6 +4,7 @@ export const iconMap = {
   account: Icons.BadgeCheck,
   alert: Icons.AlertTriangle,
   'alert-circle': Icons.AlertCircle,
+  'arrow-right': Icons.ArrowRight,
   'badge-check': Icons.BadgeCheck,
   billing: Icons.CreditCard,
   bot: Icons.BotMessageSquare,
