@@ -73,5 +73,24 @@
     "Marketing": "Marketing",
     "Sales": "Sales",
     "Development": "Development"
+  },
+  "WorkspaceIntegrations": {
+    "Workspace for": "Workspace for"
+  },
+  "IntegrationCard": {
+    "connected": "Connected",
+    "notConnected": "Not Connected",
+    "configure": "Configure",
+    "connect": "Connect",
+    "disconnect": "Disconnect",
+    "connecting": "Connecting...",
+    "disconnecting": "Disconnecting...",
+    "errorConnecting": "An error occurred while connecting. Please try again.",
+    "errorDisconnecting": "An error occurred while disconnecting. Please try again.",
+    "successConnecting": "Successfully connected!",
+    "successDisconnecting": "Successfully disconnected!"
+  },
+  "Loader": {
+    "message": "Crunching the numbers..."
   }
 }

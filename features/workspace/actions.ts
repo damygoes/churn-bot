@@ -7,6 +7,7 @@ import {
   workspaceMemberships,
   workspaces,
 } from '@/db/schema'
+import { WorkspaceWithIntegrations } from '@/types/workspace'
 import { auth } from '@clerk/nextjs/server'
 import { eq } from 'drizzle-orm'
 
@@ -130,4 +131,69 @@ export async function getTemplatesWithIntegrations() {
       },
     },
   })
+}
+
+// Get all workspaces created by the current user
+export async function getWorkspacesCreatedByCurrentUser() {
+  const { userId } = await auth()
+  if (!userId) return []
+
+  const dbUser = await db.query.users.findFirst({
+    where: eq(users.clerkUserId, userId),
+  })
+  if (!dbUser) return []
+
+  const workspacesCreated = await db.query.workspaces.findMany({
+    where: eq(workspaces.createdByUserId, dbUser.id),
+    with: {
+      template: true, // Include the related template
+    },
+  })
+
+  return workspacesCreated.map((ws) => ({
+    ...ws,
+    displayName: `Workspace for ${ws.template.name}`,
+  }))
+}
+
+// Get all workspaces with their integrations for the current user
+export async function getWorkspacesWithIntegrationsForUser(): Promise<
+  WorkspaceWithIntegrations[]
+> {
+  const { userId } = await auth()
+  if (!userId) return []
+
+  const dbUser = await db.query.users.findFirst({
+    where: eq(users.clerkUserId, userId),
+  })
+  if (!dbUser) return []
+
+  const workspacesWithIntegrations = await db.query.workspaces.findMany({
+    where: eq(workspaces.createdByUserId, dbUser.id),
+    with: {
+      template: {
+        with: {
+          templateIntegrations: {
+            with: {
+              integration: true,
+            },
+          },
+        },
+      },
+      workspaceIntegrations: {
+        with: {
+          integration: true,
+        },
+      },
+    },
+  })
+
+  return workspacesWithIntegrations.map((ws) => ({
+    id: ws.id,
+    displayName: `Workspace for ${ws.template.name}`,
+    availableIntegrations: ws.template.templateIntegrations.map(
+      (ti) => ti.integration
+    ),
+    connectedIntegrations: ws.workspaceIntegrations.map((wi) => wi.integration),
+  }))
 }

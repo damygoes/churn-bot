@@ -73,5 +73,24 @@
     "Marketing": "Marketing",
     "Sales": "Vertrieb",
     "Development": "Entwicklung"
+  },
+  "WorkspaceIntegrations": {
+    "Workspace for": "Arbeitsbereich für"
+  },
+  "IntegrationCard": {
+    "connected": "Verbunden",
+    "notConnected": "Nicht verbunden",
+    "configure": "Konfigurieren",
+    "connect": "Verbinden",
+    "disconnect": "Trennen",
+    "connecting": "Verbinden...",
+    "disconnecting": "Trennen...",
+    "errorConnecting": "Beim Verbinden ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.",
+    "errorDisconnecting": "Beim Trennen ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.",
+    "successConnecting": "Erfolgreich verbunden!",
+    "successDisconnecting": "Erfolgreich getrennt!"
+  },
+  "Loader": {
+    "message": "Zahlen crunchen..."
   }
 }

@@ -81,13 +81,6 @@ export const workspaceIntegrations = pgTable('workspace_integrations', {
 })
 
 // Relations
-export const workspaceTemplatesRelations = relations(
-  workspaceTemplates,
-  ({ many }) => ({
-    templateIntegrations: many(templateIntegrations),
-  })
-)
-
 export const templateIntegrationsRelations = relations(
   templateIntegrations,
   ({ one }) => ({
@@ -97,6 +90,36 @@ export const templateIntegrationsRelations = relations(
     }),
     integration: one(integrations, {
       fields: [templateIntegrations.integrationId],
+      references: [integrations.id],
+    }),
+  })
+)
+
+export const workspaceTemplatesRelations = relations(
+  workspaceTemplates,
+  ({ many }) => ({
+    templateIntegrations: many(templateIntegrations),
+  })
+)
+
+export const workspacesRelations = relations(workspaces, ({ one, many }) => ({
+  template: one(workspaceTemplates, {
+    fields: [workspaces.templateId],
+    references: [workspaceTemplates.id],
+  }),
+  workspaceIntegrations: many(workspaceIntegrations),
+  memberships: many(workspaceMemberships),
+}))
+
+export const workspaceIntegrationsRelations = relations(
+  workspaceIntegrations,
+  ({ one }) => ({
+    workspace: one(workspaces, {
+      fields: [workspaceIntegrations.workspaceId],
+      references: [workspaces.id],
+    }),
+    integration: one(integrations, {
+      fields: [workspaceIntegrations.integrationId],
       references: [integrations.id],
     }),
   })

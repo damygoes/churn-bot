@@ -9,3 +9,10 @@ export type WorkspaceTemplateWithIntegrations = WorkspaceTemplate & {
     integration: Integration
   })[]
 }
+
+export type WorkspaceWithIntegrations = {
+  id: string
+  displayName: string
+  availableIntegrations: Integration[]
+  connectedIntegrations: Integration[]
+}

@@ -1,10 +1,10 @@
-import { getCurrentUser } from '@/actions/users.actions'
 import { AppSidebar } from '@/components/layout/AppSidebar'
 import {
   SidebarInset,
   SidebarProvider,
 } from '@/components/navigation/sidebar/Sidebar'
 import { SiteHeader } from '@/components/navigation/SiteHeader'
+import { getCurrentUser } from '@/features/user/actions'
 import { getAppUserData } from '@/features/user/utils'
 import { redirect } from 'next/navigation'
 
