@@ -1,12 +1,12 @@
-import { getCurrentUser } from '@/actions/users.actions'
 import { AppSidebar } from '@/components/layout/AppSidebar'
 import {
   SidebarInset,
   SidebarProvider,
 } from '@/components/navigation/sidebar/Sidebar'
 import { SiteHeader } from '@/components/navigation/SiteHeader'
-import { SyncClerkUser } from '@/features/auth/components/SyncClerkUser'
+import { getCurrentUser } from '@/features/user/actions'
 import { getAppUserData } from '@/features/user/utils'
+import { redirect } from 'next/navigation'
 
 export default async function AppLayout({
   children,
@@ -16,7 +16,7 @@ export default async function AppLayout({
   const user = await getCurrentUser()
 
   if (!user) {
-    return null // TODO: redirect to login or show an error
+    redirect('/')
   }
 
   const appUser = getAppUserData(user)
@@ -27,10 +27,7 @@ export default async function AppLayout({
         <SiteHeader />
         <div className="flex flex-1">
           <AppSidebar user={appUser} />
-          <SidebarInset>
-            <SyncClerkUser />
-            {children}
-          </SidebarInset>
+          <SidebarInset>{children}</SidebarInset>
         </div>
       </SidebarProvider>
     </div>

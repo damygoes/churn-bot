@@ -106,7 +106,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         {...props}
       >
         {iconPosition === 'before' && renderIcon(effectiveIcon, 'mr-1')}
-        {isLoading ? 'Loading...' : children}
+        {children}
         {iconPosition === 'after' &&
           !isLoading &&
           renderIcon(effectiveIcon, 'ml-1')}
