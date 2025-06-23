@@ -36,9 +36,8 @@ export function IntegrationCard({
       <CardDescription>
         <Badge variant="outline" className="flex items-center gap-2">
           <span
-            className={cn('size-2 rounded-full', {
+            className={cn('inline-block size-2 rounded-full bg-border', {
               'bg-success': isConnected,
-              'bg-border': !isConnected,
             })}
             aria-hidden="true"
           />

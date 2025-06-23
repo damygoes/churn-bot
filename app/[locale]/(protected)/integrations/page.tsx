@@ -1,8 +1,8 @@
 import AppContainer from '@/components/layout/AppContainer'
 import { Loader } from '@/components/loader/Loader'
+import { IntegrationsList } from '@/features/integrations/components/IntergrationsList'
 import { EmptyWorkspaceIntegrations } from '@/features/integrations/components/states/EmptyIntegrations'
 import { getWorkspacesWithIntegrationsForUser } from '@/features/workspace/actions'
-import { WorkspaceIntegrations } from '@/features/workspace/components/WorkspaceIntegrations'
 import { Suspense } from 'react'
 
 export default async function IntegrationsPage() {
@@ -15,9 +15,7 @@ export default async function IntegrationsPage() {
   return (
     <Suspense fallback={<Loader fullPage />}>
       <AppContainer className="space-y-8 p-6">
-        {workspaces.map((workspace) => (
-          <WorkspaceIntegrations key={workspace.id} workspace={workspace} />
-        ))}
+        <IntegrationsList workspaces={workspaces} />
       </AppContainer>
     </Suspense>
   )
