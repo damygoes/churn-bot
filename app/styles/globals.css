@@ -126,7 +126,7 @@
 
 @layer utilities {
   .glass {
-    @apply backdrop-blur-xs bg-background/80 border-b border-border shadow-sm rounded-2xl;
+    @apply backdrop-blur-xs bg-background/80 border-b border-border shadow-sm rounded-4xl;
   }
 }
 
