@@ -6,13 +6,10 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card/Card'
+import { Integration } from '@/db/schema'
 import { IntegrationCard } from '@/features/integrations/components/IntegrationCard'
-import { useTranslations } from 'next-intl'
-
-interface Integration {
-  id: string
-  name: string
-}
+import { integrationHandlers } from '@/features/integrations/connectors'
+import { useLocale, useTranslations } from 'next-intl'
 
 interface WorkspaceWithIntegrations {
   id: string
@@ -26,6 +23,7 @@ interface Props {
 }
 
 export function WorkspaceIntegrations({ workspace }: Props) {
+  const locale = useLocale()
   const tWorkspaces = useTranslations('Workspaces')
   const tWorkspaceIntegrations = useTranslations('WorkspaceIntegrations')
 
@@ -33,10 +31,12 @@ export function WorkspaceIntegrations({ workspace }: Props) {
   const suffix = workspace.displayName.slice(prefix.length + 1) // +1 for the space
 
   function handleConnect(workspaceId: string, integrationId: string) {
-    console.log(
-      `Connect workspace ${workspaceId} to integration ${integrationId}`
+    const integration = workspace.availableIntegrations.find(
+      (i) => i.id === integrationId
     )
-    // TODO: implement real connect logic
+    const handler = integration && integrationHandlers[integration.slug]
+    if (handler) handler(workspaceId, locale)
+    else console.warn('No handler for', integration?.slug)
   }
 
   return (
