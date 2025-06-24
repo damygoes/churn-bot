@@ -54,11 +54,11 @@ export default function Hero() {
       >
         <Image
           src="/lp_hero.jpg"
-          alt="App dashboard preview"
+          alt="KPI Bot dashboard showing analytics and metrics"
           priority
           unoptimized
-          width="50"
-          height="50"
+          width={800}
+          height={600}
           className="w-full h-auto rounded-xl object-cover"
         />
       </motion.div>

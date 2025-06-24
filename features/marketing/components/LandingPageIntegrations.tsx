@@ -54,8 +54,8 @@ export default function LandingPageIntegrations() {
               loading="lazy"
               draggable={false}
               aria-label={name}
-              width={500}
-              height={500}
+              width={300}
+              height={300}
             />
           </motion.div>
         ))}
