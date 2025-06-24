@@ -5,7 +5,60 @@
   "LandingPage": {
     "title": "Experience the power of ChurnBot",
     "description": "This is the landing page of our application. Explore the features and functionalities we offer.",
-    "getStarted": "Get Started"
+    "getStarted": "Get Started",
+    "hero": {
+      "title": "Share key metrics with your team in real-time",
+      "subtitle": "Sync your MRR, subscriptions, churn and more with Slack or your internal dashboard."
+    },
+    "features": {
+      "heading": "Everything you need for transparent metrics",
+      "subheading": "Sync your key data and give your team full visibility in real time.",
+      "metrics": {
+        "title": "Track Core Metrics",
+        "description": "Monitor MRR, ARR, churn, and new subscriptions in one place."
+      },
+      "teams": {
+        "title": "Empower Your Team",
+        "description": "Share live insights without adding extra meetings or dashboards."
+      },
+      "slack": {
+        "title": "Slack Integration",
+        "description": "Get automatic updates directly in your team’s Slack channels."
+      },
+      "realtime": {
+        "title": "Live Data Sync",
+        "description": "Connect Stripe and other tools to sync data in real time."
+      }
+    },
+    "howItWorks": {
+      "heading": "How It Works",
+      "subheading": "Get started in minutes and keep your team aligned effortlessly.",
+      "connect": {
+        "title": "Connect",
+        "description": "Link Stripe and other data sources securely."
+      },
+      "sync": {
+        "title": "Sync",
+        "description": "Automatically pull live metrics with zero setup."
+      },
+      "share": {
+        "title": "Share",
+        "description": "Send updates to Slack or share your internal dashboard."
+      },
+      "align": {
+        "title": "Align",
+        "description": "Keep your team focused with transparent, real-time data."
+      }
+    },
+    "integrations": {
+      "heading": "Seamless Integrations",
+      "subheading": "Connect your favorite tools like Stripe, Slack, GitHub, and more in minutes."
+    },
+    "cta": {
+      "heading": "Ready to unlock transparency?",
+      "subtitle": "Start sharing key SaaS metrics with your team today — free trial included.",
+      "getStarted": "Get Started"
+    }
   },
   "Sidebar": {
     "dashboard": "Dashboard",

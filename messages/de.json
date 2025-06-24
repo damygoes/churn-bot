@@ -5,7 +5,60 @@
   "LandingPage": {
     "title": "Erleben Sie die Kraft von ChurnBot",
     "description": "Dies ist die Landing-Page unserer Anwendung. Entdecken Sie die Funktionen und Möglichkeiten, die wir bieten.",
-    "getStarted": "Jetzt starten"
+    "getStarted": "Jetzt starten",
+    "hero": {
+      "title": "Teilen Sie wichtige Kennzahlen in Echtzeit mit Ihrem Team",
+      "subtitle": "Synchronisieren Sie Ihren MRR, Ihre Abonnements, Ihre Abwanderung und mehr mit Slack oder Ihrem internen Dashboard."
+    },
+    "features": {
+      "heading": "Alles, was Sie für transparente Kennzahlen brauchen",
+      "subheading": "Synchronisieren Sie Ihre wichtigsten Daten und geben Sie Ihrem Team volle Transparenz in Echtzeit.",
+      "metrics": {
+        "title": "Kernkennzahlen verfolgen",
+        "description": "Überwachen Sie MRR, ARR, Abwanderung und neue Abonnements an einem Ort."
+      },
+      "teams": {
+        "title": "Stärken Sie Ihr Team",
+        "description": "Teilen Sie Live-Einblicke ohne zusätzliche Meetings oder Dashboards."
+      },
+      "slack": {
+        "title": "Slack-Integration",
+        "description": "Erhalten Sie automatische Updates direkt in den Slack-Kanälen Ihres Teams."
+      },
+      "realtime": {
+        "title": "Live-Datensynchronisierung",
+        "description": "Verbinden Sie Stripe und andere Tools, um Daten in Echtzeit zu synchronisieren."
+      }
+    },
+    "howItWorks": {
+      "heading": "So funktioniert's",
+      "subheading": "In wenigen Minuten starten und Ihr Team mühelos auf dem Laufenden halten.",
+      "connect": {
+        "title": "Verbinden",
+        "description": "Stripe und andere Datenquellen sicher verknüpfen."
+      },
+      "sync": {
+        "title": "Synchronisieren",
+        "description": "Automatisch Live-Metriken abrufen, ganz ohne Einrichtung."
+      },
+      "share": {
+        "title": "Teilen",
+        "description": "Updates an Slack senden oder Ihr internes Dashboard teilen."
+      },
+      "align": {
+        "title": "Ausrichten",
+        "description": "Sorgen Sie mit transparenten Echtzeitdaten für einen fokussierten Team-Einsatz."
+      }
+    },
+    "integrations": {
+      "heading": "Nahtlose Integrationen",
+      "subheading": "Verbinden Sie Ihre Lieblingstools wie Stripe, Slack, GitHub und mehr in wenigen Minuten."
+    },
+    "cta": {
+      "heading": "Bereit für mehr Transparenz?",
+      "subtitle": "Teilen Sie noch heute wichtige SaaS-Kennzahlen mit Ihrem Team – kostenlose Testversion inklusive.",
+      "getStarted": "Jetzt starten"
+    }
   },
   "Sidebar": {
     "dashboard": "Dashboard",
