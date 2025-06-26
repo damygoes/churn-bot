@@ -1,4 +1,5 @@
 import {
+  Workspace,
   type Integration,
   type TemplateIntegration,
   type WorkspaceTemplate,
@@ -15,4 +16,8 @@ export type WorkspaceWithIntegrations = {
   displayName: string
   availableIntegrations: Integration[]
   connectedIntegrations: Integration[]
+}
+
+export type WorkspaceWithTemplate = Workspace & {
+  template?: WorkspaceTemplate
 }

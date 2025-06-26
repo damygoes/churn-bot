@@ -1,7 +1,7 @@
 'use client'
 
-import { getTemplatesWithIntegrations } from '@/actions/workspace.actions'
 import { Button } from '@/components/ui/button/Button'
+import { getTemplatesWithIntegrations } from '@/features/workspace/actions'
 import { useTranslations } from 'next-intl'
 import { useState } from 'react'
 import { createWorkspacesFromTemplates } from '../lib/createWorkspaces'

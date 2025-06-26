@@ -13,7 +13,8 @@
     "prepare": "husky install",
     "generate:migrations": "npx drizzle-kit generate",
     "apply:migrations": "npx drizzle-kit push",
-    "seed:db": "tsx scripts/seedDatabase.ts"
+    "seed:db": "tsx scripts/seedDatabase.ts",
+    "seed:stripe": "tsx scripts/generateStripeTestData.ts"
   },
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown"
@@ -51,6 +52,8 @@
     "react-day-picker": "^9.7.0",
     "react-dom": "^19.0.0",
     "react-hook-form": "^7.58.1",
+    "recharts": "^3.0.0",
+    "stripe": "^18.2.1",
     "tailwind-merge": "^3.3.1",
     "vaul": "^1.1.2",
     "zod": "^3.25.67"

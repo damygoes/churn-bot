@@ -7,7 +7,10 @@ import {
   workspaceMemberships,
   workspaces,
 } from '@/db/schema'
-import { WorkspaceWithIntegrations } from '@/types/workspace'
+import {
+  WorkspaceWithIntegrations,
+  WorkspaceWithTemplate,
+} from '@/types/workspace'
 import { auth } from '@clerk/nextjs/server'
 import { eq } from 'drizzle-orm'
 
@@ -82,7 +85,9 @@ export async function inviteUserToWorkspace({
 }
 
 // Get all workspaces the current user belongs to
-export async function getUserWorkspaces() {
+export async function getCurrentUserWorkspaces(): Promise<
+  WorkspaceWithTemplate[]
+> {
   const { userId } = await auth()
   if (!userId) return []
 
@@ -95,11 +100,28 @@ export async function getUserWorkspaces() {
   const memberships = await db.query.workspaceMemberships.findMany({
     where: eq(workspaceMemberships.userId, dbUser.id),
     with: {
-      workspace: true,
+      workspace: {
+        with: {
+          template: true,
+        },
+      },
     },
   })
 
   return memberships.map((m) => m.workspace)
+}
+
+export async function getUserWorkspacesByUserId(userId: string) {
+  const memberships = await db
+    .select({
+      id: workspaces.id,
+      name: workspaces.name,
+    })
+    .from(workspaceMemberships)
+    .innerJoin(workspaces, eq(workspaceMemberships.workspaceId, workspaces.id))
+    .where(eq(workspaceMemberships.userId, userId))
+
+  return memberships
 }
 
 // Fetch workspace + integrations (joined)

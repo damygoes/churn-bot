@@ -1,7 +1,14 @@
-export default function MetricsPage() {
+import { Loader } from '@/components/loader/Loader'
+import MetricsPageClient from '@/features/metrics/components/MetricsPageClient'
+import { getCurrentUserWorkspaces } from '@/features/workspace/actions'
+import { Suspense } from 'react'
+
+export default async function MetricsPage() {
+  const workspaces = await getCurrentUserWorkspaces()
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)] bg-background">
-      <p>Metrics Page</p>
-    </div>
+    <Suspense fallback={<Loader fullPage />}>
+      <MetricsPageClient defaultWorkspaces={workspaces} />
+    </Suspense>
   )
 }

@@ -38,3 +38,13 @@ export async function uploadToS3Presigned(file: File): Promise<string> {
 
   return imageUrl
 }
+
+export function formatCurrency(amount: number, currency: string) {
+  return new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency,
+    currencyDisplay: 'symbol', // This makes it show € or $ etc.
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  }).format(amount)
+}
