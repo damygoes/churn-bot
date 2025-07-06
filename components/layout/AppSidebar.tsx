@@ -36,7 +36,7 @@ export function AppSidebar({ user, ...props }: AppSidebarProps) {
               <Link href="#">
                 <Icon name="bot" size="5xl" />
                 <div className="grid flex-1 text-left text-sm leading-tight">
-                  <span className="truncate font-semibold">Churn</span>
+                  <span className="truncate font-semibold">KPI</span>
                   <span className="truncate text-xs uppercase leading-2.5 tracking-widest">
                     Bot
                   </span>
