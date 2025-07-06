@@ -81,27 +81,6 @@ export const workspaceIntegrations = pgTable('workspace_integrations', {
 })
 
 // Relations
-export const templateIntegrationsRelations = relations(
-  templateIntegrations,
-  ({ one }) => ({
-    workspaceTemplate: one(workspaceTemplates, {
-      fields: [templateIntegrations.templateId], // local FK column in templateIntegrations
-      references: [workspaceTemplates.id], // referenced PK in workspaceTemplates
-    }),
-    integration: one(integrations, {
-      fields: [templateIntegrations.integrationId],
-      references: [integrations.id],
-    }),
-  })
-)
-
-export const workspaceTemplatesRelations = relations(
-  workspaceTemplates,
-  ({ many }) => ({
-    templateIntegrations: many(templateIntegrations),
-  })
-)
-
 export const workspacesRelations = relations(workspaces, ({ one, many }) => ({
   template: one(workspaceTemplates, {
     fields: [workspaces.templateId],
@@ -110,6 +89,27 @@ export const workspacesRelations = relations(workspaces, ({ one, many }) => ({
   workspaceIntegrations: many(workspaceIntegrations),
   memberships: many(workspaceMemberships),
 }))
+
+export const workspaceTemplatesRelations = relations(
+  workspaceTemplates,
+  ({ many }) => ({
+    templateIntegrations: many(templateIntegrations),
+  })
+)
+
+export const templateIntegrationsRelations = relations(
+  templateIntegrations,
+  ({ one }) => ({
+    workspaceTemplate: one(workspaceTemplates, {
+      fields: [templateIntegrations.templateId],
+      references: [workspaceTemplates.id],
+    }),
+    integration: one(integrations, {
+      fields: [templateIntegrations.integrationId],
+      references: [integrations.id],
+    }),
+  })
+)
 
 export const workspaceIntegrationsRelations = relations(
   workspaceIntegrations,
@@ -121,6 +121,20 @@ export const workspaceIntegrationsRelations = relations(
     integration: one(integrations, {
       fields: [workspaceIntegrations.integrationId],
       references: [integrations.id],
+    }),
+  })
+)
+
+export const workspaceMembershipsRelations = relations(
+  workspaceMemberships,
+  ({ one }) => ({
+    workspace: one(workspaces, {
+      fields: [workspaceMemberships.workspaceId],
+      references: [workspaces.id],
+    }),
+    user: one(users, {
+      fields: [workspaceMemberships.userId],
+      references: [users.id],
     }),
   })
 )
